@@ -10,7 +10,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class VinylController extends AbstractController
 {
-    #[Route(path: '/', name: 'app_homepage')]
+    #[Route(path: '/', name: 'app_homepage', methods: ['GET'])]
     public function homepage(): Response
     {
         $tracks = [
@@ -28,7 +28,7 @@ class VinylController extends AbstractController
         ]);
     }
 
-    #[Route(path: '/browse/{slug}', name: 'app_browse')]
+    #[Route(path: '/browse/{slug}', name: 'app_browse', methods: ['GET'])]
     public function browse(string $slug = null): Response
     {
         $genre = $slug ? u(str_replace('-', ' ', $slug))->title(true) : null;
